@@ -14,15 +14,13 @@ public class PaneOrganizer {
         this.setUp();
     }
 
-    private void setUp(){
-        Pane cloudPane = new Pane();
-        this.root.setCenter(cloudPane);
-        new Game(cloudPane);
-    }
-
-
     public Pane getRoot() {
         return this.root;
     }
-}
 
+    private void setUp() {
+        Pane gamePane = new Pane();
+        this.root.setCenter(gamePane);
+        new Game(gamePane);
+    }
+}
