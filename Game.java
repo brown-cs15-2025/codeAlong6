@@ -4,26 +4,21 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 public class Game {
+    private Pane pane;
+    private Cloud cloud;
 
-    Pane pane;
-    Cloud currCloud;
-    public Game(Pane pane){
-        this.pane = pane;
+    public Game(Pane gamePane) {
+        this.pane = gamePane;
         this.pane.setFocusTraversable(true);
         this.pane.setOnKeyPressed((KeyEvent e) -> this.onKeyPressed(e));
+        this.cloud = new Cloud(Constants.CLOUD_1, gamePane);
+        new Cloud(Constants.CLOUD_2, gamePane);
     }
 
-    public void onKeyPressed(KeyEvent e){
-        switch (e.getCode()){
-            case DIGIT1:
-                this.currCloud = new Cloud(Constants.CLOUD_1,this.pane);
-                break;
-            case DIGIT2:
-                this.currCloud = new Cloud(Constants.CLOUD_2,this.pane);
-                break;
-            case DOWN:
-                this.currCloud.moveDown();
-                break;
+    private void onKeyPressed(KeyEvent e) {
+        switch (e.getCode()) {
+            case RIGHT:
+                this.cloud.moveRight();
             default:
                 break;
         }
