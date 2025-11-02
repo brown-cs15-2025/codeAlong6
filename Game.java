@@ -23,6 +23,10 @@ public class Game {
                 break;
             case DOWN:
                 this.currCloud.moveDown();
+                break;
+            default:
+                break;
         }
+        e.consume();
     }
 }
